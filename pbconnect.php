@@ -36,7 +36,7 @@ class Pbconnect extends PaymentModule
     {
         $this->name = 'pbconnect';
         $this->tab = 'payments_gateways';
-        $this->version = '5.0.0';
+        $this->version = '5.0.1';
         $this->author = 'PB Integrações';
         $this->need_instance = 1;
         $this->bootstrap = true;
@@ -197,29 +197,55 @@ class Pbconnect extends PaymentModule
         }
 
         $order = $params['order'];
-        $transactions = (new TransactionRepository())->findByOrder((int) $order->id);
-        $payload = (new TransactionRepository())->getLatestPayload((int) $order->id);
+        $idOrder = (int) $order->id;
+        $repo = new TransactionRepository();
+        $transactions = $repo->findByOrder($idOrder);
+        $payload = $repo->getLatestPayload($idOrder);
+        $pixPayload = $repo->findPixPayloadForOrder($idOrder) ?? $payload;
         $pix = null;
         $boleto = null;
-        if (is_array($payload)) {
-            if (!empty($payload['qr_codes'])) {
-                $pix = PbConnect\Payment\PixPaymentHandler::extractQrDisplay($payload);
-                if (!empty($pix['image_url']) && PbConnect\Support\PixQrProxy::needsProxy($pix['image_url'])) {
-                    $pix['image_url'] = $this->urls()->pixQrProxyUrl((int) $order->id_cart);
-                }
+        $pixExpiresAt = '';
+        if (is_array($pixPayload) && !empty($pixPayload['qr_codes'])) {
+            $pix = PbConnect\Payment\PixPaymentHandler::extractQrDisplay($pixPayload);
+            if (!empty($pix['image_url']) && PbConnect\Support\PixQrProxy::needsProxy($pix['image_url'])) {
+                $pix['image_url'] = $this->urls()->pixQrProxyUrl((int) $order->id_cart);
             }
-            if (!empty($payload['charges'][0]['payment_method']['type'])
-                && strtoupper((string) $payload['charges'][0]['payment_method']['type']) === 'BOLETO'
-            ) {
-                $boleto = PbConnect\Payment\BoletoPaymentHandler::extractBoletoDisplay($payload);
+            $rawExp = (string) ($pixPayload['qr_codes'][0]['expiration_date'] ?? '');
+            if ($rawExp !== '') {
+                $ts = strtotime($rawExp);
+                $pixExpiresAt = $ts ? date('d/m/Y H:i', $ts) : $rawExp;
             }
         }
+        if (is_array($payload)
+            && !empty($payload['charges'][0]['payment_method']['type'])
+            && strtoupper((string) $payload['charges'][0]['payment_method']['type']) === 'BOLETO'
+        ) {
+            $boleto = PbConnect\Payment\BoletoPaymentHandler::extractBoletoDisplay($payload);
+        }
+
+        $mapper = new OrderMapper();
+        $paid = (int) $order->getCurrentState() === $mapper->getPaidOrderStateId();
+        $statusUrl = '';
+        if ($pix && !$paid) {
+            $statusUrl = $this->context->link->getModuleLink($this->name, 'process', [
+                'action' => 'order_status',
+                'id_order' => $idOrder,
+                'key' => (string) $order->secure_key,
+            ], true);
+        }
+
+        $this->registerPaymentReturnAssets((bool) $pix);
 
         $this->smarty->assign([
             'order_reference' => $order->reference,
             'status' => 'ok',
             'pb_transactions' => $transactions,
             'pb_pix' => $pix,
+            'pb_pix_paid' => $paid,
+            'pb_pix_expires_at' => $pixExpiresAt,
+            'pb_pix_status_url' => $statusUrl,
+            'pb_pix_order_id' => $idOrder,
+            'pb_pix_copy_icon' => $this->getPathUri() . 'views/img/copy-icon.svg',
             'pb_boleto' => $boleto,
         ]);
 
@@ -319,7 +345,13 @@ class Pbconnect extends PaymentModule
 
     public function hookActionFrontControllerSetMedia(): void
     {
-        $phpSelf = $this->context->controller->php_self ?? '';
+        $phpSelf = (string) ($this->context->controller->php_self ?? '');
+        if ($phpSelf === 'order-confirmation') {
+            $this->registerPaymentReturnAssets(true);
+
+            return;
+        }
+
         if ($phpSelf !== 'order' && $phpSelf !== 'checkout') {
             return;
         }
@@ -477,5 +509,40 @@ class Pbconnect extends PaymentModule
         );
 
         return (int) $this->currentOrder;
+    }
+
+    private function registerPaymentReturnAssets(bool $withPixJs): void
+    {
+        if (!isset($this->context->controller) || !is_object($this->context->controller)) {
+            return;
+        }
+
+        $cssRel = 'modules/' . $this->name . '/views/css/payment_return.css';
+        $cssPath = _PS_ROOT_DIR_ . '/' . $cssRel;
+        $this->context->controller->registerStylesheet(
+            'pbconnect-payment-return',
+            $cssRel,
+            [
+                'media' => 'all',
+                'priority' => 150,
+                'version' => is_file($cssPath) ? (string) filemtime($cssPath) : $this->version,
+            ]
+        );
+
+        if (!$withPixJs) {
+            return;
+        }
+
+        $jsRel = 'modules/' . $this->name . '/views/js/payment_return.js';
+        $jsPath = _PS_ROOT_DIR_ . '/' . $jsRel;
+        $this->context->controller->registerJavascript(
+            'pbconnect-payment-return',
+            $jsRel,
+            [
+                'position' => 'bottom',
+                'priority' => 150,
+                'version' => is_file($jsPath) ? (string) filemtime($jsPath) : $this->version,
+            ]
+        );
     }
 }

@@ -1,7 +1,7 @@
 {
   "name": "pbintegracoes/pbconnect-prestashop",
   "description": "PB Connect payment module for PrestaShop (API v1 / Vindi)",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "type": "prestashop-module",
   "license": "MIT",
   "authors": [

@@ -33,6 +33,10 @@ class PbconnectProcessModuleFrontController extends ModuleFrontController
             $this->servePixQr();
         }
 
+        if ($action === 'order_status') {
+            $this->serveOrderStatus();
+        }
+
         header('Content-Type: application/json');
         /** @var Pbconnect $module */
         $module = $this->module;
@@ -159,9 +163,9 @@ class PbconnectProcessModuleFrontController extends ModuleFrontController
         }
 
         $idOrder = (int) Order::getIdByCartId($idCart);
-        $payload = $idOrder > 0 ? (new TransactionRepository())->getLatestPayload($idOrder) : null;
+        $repo = new TransactionRepository();
+        $payload = $idOrder > 0 ? $repo->findPixPayloadForOrder($idOrder) : null;
         if (!is_array($payload)) {
-            // Fallback: latest by cart via raw query in repo if needed
             http_response_code(404);
             exit;
         }
@@ -174,6 +178,39 @@ class PbconnectProcessModuleFrontController extends ModuleFrontController
         }
 
         PixQrProxy::fetchAndStream($url);
+    }
+
+    /**
+     * PIX success-page poll — same shape as Woo/Magento (paid flag).
+     * Auth: order secure_key (same as order-confirmation URL).
+     */
+    private function serveOrderStatus(): void
+    {
+        header('Content-Type: application/json');
+        $idOrder = (int) Tools::getValue('id_order');
+        $key = (string) Tools::getValue('key');
+        $order = new Order($idOrder);
+        if (!Validate::isLoadedObject($order)
+            || $key === ''
+            || !hash_equals((string) $order->secure_key, $key)
+            || (string) $order->module !== $this->module->name
+        ) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'Forbidden']);
+            exit;
+        }
+
+        $mapper = new OrderMapper();
+        $state = (int) $order->getCurrentState();
+        $paid = $state === $mapper->getPaidOrderStateId();
+
+        echo json_encode([
+            'success' => true,
+            'paid' => $paid,
+            'state' => $state,
+            'data' => $paid ? 'paid' : 'waiting',
+        ]);
+        exit;
     }
 
     /**

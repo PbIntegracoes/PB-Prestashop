@@ -91,7 +91,63 @@ final class TransactionRepository
         if ($rows === []) {
             return null;
         }
-        $raw = (string) ($rows[0]['payload'] ?? '');
+
+        // Prefer a terminal paid payload when present (charge_created often arrives after
+        // bill_paid and would otherwise hide QR / card details from the "latest" row).
+        foreach ($rows as $row) {
+            $status = strtoupper((string) ($row['status'] ?? ''));
+            if (in_array($status, ['PAID', 'AVAILABLE'], true)) {
+                $decoded = $this->decodePayloadRow($row);
+                if ($decoded !== null) {
+                    return $decoded;
+                }
+            }
+        }
+
+        return $this->decodePayloadRow($rows[0]);
+    }
+
+    /**
+     * PIX QR lives on the create/WAITING response. Later webhooks (charge_created,
+     * bill_paid) are slim and omit qr_codes — keep a dedicated lookup for display/proxy.
+     *
+     * @return array<string, mixed>|null
+     */
+    public function findPixPayloadForOrder(int $idOrder): ?array
+    {
+        foreach ($this->findByOrder($idOrder) as $row) {
+            $decoded = $this->decodePayloadRow($row);
+            if ($decoded === null) {
+                continue;
+            }
+            $qr = $decoded['qr_codes'][0] ?? null;
+            if (!is_array($qr)) {
+                continue;
+            }
+            $text = (string) ($qr['text'] ?? $qr['emv'] ?? '');
+            $hasLink = false;
+            foreach ($qr['links'] ?? [] as $link) {
+                if (!empty($link['href'])) {
+                    $hasLink = true;
+                    break;
+                }
+            }
+            if ($text !== '' || $hasLink) {
+                return $decoded;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     *
+     * @return array<string, mixed>|null
+     */
+    private function decodePayloadRow(array $row): ?array
+    {
+        $raw = (string) ($row['payload'] ?? '');
         if ($raw === '') {
             return null;
         }

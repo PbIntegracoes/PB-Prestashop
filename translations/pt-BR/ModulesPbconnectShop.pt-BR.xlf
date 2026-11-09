@@ -32,6 +32,15 @@
       <trans-unit id="invalid_tax_id"><source>Invalid CPF or CNPJ. Please update your billing address with a valid document and try again.</source><target>CPF ou CNPJ inválido. Atualize o endereço de cobrança com um documento válido e tente novamente.</target></trans-unit>
       <trans-unit id="invalid_tax_id_missing"><source>Please enter a valid CPF or CNPJ in your billing address (DNI / VAT number) to continue.</source><target>Informe um CPF ou CNPJ válido no endereço de cobrança (DNI / Nº de IVA) para continuar.</target></trans-unit>
       <trans-unit id="card_charge_retry"><source>We could not charge this card. Please enter the card details again.</source><target>Não foi possível cobrar este cartão. Informe os dados novamente.</target></trans-unit>
+      <trans-unit id="awaiting_payment"><source>Awaiting your payment</source><target>Aguardando seu pagamento</target></trans-unit>
+      <trans-unit id="payment_confirmed"><source>Payment confirmed</source><target>Pagamento confirmado</target></trans-unit>
+      <trans-unit id="copied"><source>Copied ✔</source><target>Copiado ✔</target></trans-unit>
+      <trans-unit id="scan_bank_app"><source>Scan the code below with your bank app.</source><target>Escaneie o código abaixo com o aplicativo do seu banco.</target></trans-unit>
+      <trans-unit id="pix_qr_code"><source>PIX QR Code</source><target>QR Code PIX</target></trans-unit>
+      <trans-unit id="pix_copy_paste_help"><source>Or copy and paste the code below in your bank app using PIX Copy and Paste.</source><target>Ou, se preferir, copie e cole o código abaixo no aplicativo do seu banco usando o PIX Copia e Cola.</target></trans-unit>
+      <trans-unit id="pix_code"><source>PIX code</source><target>Código PIX</target></trans-unit>
+      <trans-unit id="copy"><source>Copy</source><target>Copiar</target></trans-unit>
+      <trans-unit id="pix_expires_on"><source>This PIX code expires on %date%.</source><target>Este código PIX expira em %date%.</target></trans-unit>
     </body>
   </file>
 </xliff>
