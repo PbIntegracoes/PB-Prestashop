@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="modules/pbconnect/views" source-language="en-US" target-language="pt" datatype="plaintext">
+    <body>
+      <trans-unit id="pix"><source>PIX</source><target>PIX</target></trans-unit>
+      <trans-unit id="boleto"><source>Boleto</source><target>Boleto</target></trans-unit>
+      <trans-unit id="credit_card"><source>Credit card</source><target>Cartão de crédito</target></trans-unit>
+      <trans-unit id="pay_checkout_pb"><source>Pay on Checkout PB</source><target>Pagar no Checkout PB</target></trans-unit>
+      <trans-unit id="card_holder"><source>Card holder</source><target>Titular do cartão</target></trans-unit>
+      <trans-unit id="card_number"><source>Card number</source><target>Número do cartão</target></trans-unit>
+      <trans-unit id="expiry"><source>Expiry (MM/YY)</source><target>Validade (MM/AA)</target></trans-unit>
+      <trans-unit id="cvv"><source>CVV</source><target>CVV</target></trans-unit>
+      <trans-unit id="installments"><source>Installments</source><target>Parcelas</target></trans-unit>
+      <trans-unit id="loading_installments"><source>Loading installments…</source><target>Carregando parcelas…</target></trans-unit>
+      <trans-unit id="pay_pix"><source>Pay with PIX</source><target>Pagar com PIX</target></trans-unit>
+      <trans-unit id="pix_help"><source>Scan the QR code or copy the code below. Payment confirmation is automatic.</source><target>Escaneie o QR code ou copie o código abaixo. A confirmação do pagamento é automática.</target></trans-unit>
+      <trans-unit id="pix_copy"><source>PIX copy and paste</source><target>PIX copia e cola</target></trans-unit>
+      <trans-unit id="copy_code"><source>Copy code</source><target>Copiar código</target></trans-unit>
+      <trans-unit id="continue_confirm"><source>Continue to order confirmation</source><target>Continuar para a confirmação do pedido</target></trans-unit>
+      <trans-unit id="boleto_generated"><source>Boleto generated</source><target>Boleto gerado</target></trans-unit>
+      <trans-unit id="digitable_line"><source>Digitable line</source><target>Linha digitável</target></trans-unit>
+      <trans-unit id="barcode"><source>Barcode</source><target>Código de barras</target></trans-unit>
+      <trans-unit id="order_placed"><source>Your order %reference% was placed successfully.</source><target>Seu pedido %reference% foi realizado com sucesso.</target></trans-unit>
+      <trans-unit id="pix_payment"><source>PIX payment</source><target>Pagamento PIX</target></trans-unit>
+      <trans-unit id="open_boleto"><source>Open boleto</source><target>Abrir boleto</target></trans-unit>
+      <trans-unit id="payment_processing"><source>Payment processing</source><target>Processando pagamento</target></trans-unit>
+      <trans-unit id="payment_processing_help"><source>We are confirming your payment. This page will refresh automatically.</source><target>Estamos confirmando seu pagamento. Esta página será atualizada automaticamente.</target></trans-unit>
+      <trans-unit id="card_not_approved"><source>Your card payment was not approved. Please check the details or try another card or payment method.</source><target>Seu pagamento com cartão não foi aprovado. Verifique os dados ou use outro cartão ou método de pagamento.</target></trans-unit>
+      <trans-unit id="card_declined_security"><source>We could not complete this payment for security reasons. Please try another card or payment method.</source><target>Não foi possível concluir o pagamento por motivos de segurança. Tente outro cartão ou método de pagamento.</target></trans-unit>
+      <trans-unit id="payment_canceled"><source>The payment was canceled. Please try again.</source><target>O pagamento foi cancelado. Tente novamente.</target></trans-unit>
+      <trans-unit id="payment_failed_retry"><source>We could not process the payment. Please try again in a moment.</source><target>Não foi possível processar o pagamento. Tente novamente em instantes.</target></trans-unit>
+      <trans-unit id="invalid_tax_id"><source>Invalid CPF or CNPJ. Please update your billing address with a valid document and try again.</source><target>CPF ou CNPJ inválido. Atualize o endereço de cobrança com um documento válido e tente novamente.</target></trans-unit>
+      <trans-unit id="invalid_tax_id_missing"><source>Please enter a valid CPF or CNPJ in your billing address (DNI / VAT number) to continue.</source><target>Informe um CPF ou CNPJ válido no endereço de cobrança (DNI / Nº de IVA) para continuar.</target></trans-unit>
+      <trans-unit id="card_charge_retry"><source>We could not charge this card. Please enter the card details again.</source><target>Não foi possível cobrar este cartão. Informe os dados novamente.</target></trans-unit>
+    </body>
+  </file>
+</xliff>

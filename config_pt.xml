@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>pbconnect</name>
+    <displayName><![CDATA[PB Connect]]></displayName>
+    <version><![CDATA[5.0.0]]></version>
+    <description><![CDATA[Aceite PIX, cart&atilde;o de cr&eacute;dito, boleto e Checkout PB com os melhores provedores.]]></description>
+    <author><![CDATA[PB Integra&ccedil;&otilde;es]]></author>
+    <tab><![CDATA[payments_gateways]]></tab>
+	<confirmUninstall><![CDATA[Tem certeza de que deseja desinstalar o PB Connect?]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+</module>

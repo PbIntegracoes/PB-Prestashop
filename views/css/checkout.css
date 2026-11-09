@@ -1,0 +1,113 @@
+/* Payment method logos — Hummingbird uses img-fluid; SVGs ship as width/height 100% */
+.payment-option__label img[src*="modules/pbconnect/"],
+.payment-options img[src*="modules/pbconnect/"],
+#checkout-payment-step img[src*="modules/pbconnect/"],
+.payment-option img[src*="modules/pbconnect/"] {
+  max-height: 32px;
+  max-width: 48px;
+  width: auto;
+  height: auto;
+}
+
+.pb-card-form .form-group {
+  margin-bottom: 0.75rem;
+}
+
+.pb-card-form #pb-card-error {
+  margin-top: 0.5rem;
+}
+
+#pb-card-holder {
+  text-transform: uppercase;
+}
+
+/* Card number: default strip of brand logos; single brand when detected */
+.pb-field-icon-wrap {
+  position: relative;
+}
+
+.pb-field-icon-wrap .pb-card-brands {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+  max-width: 55%;
+}
+
+.pb-field-icon-wrap .pb-card-brands img {
+  height: 14px !important;
+  max-height: 14px !important;
+  width: auto !important;
+  max-width: 22px !important;
+  display: block;
+  object-fit: contain;
+}
+
+.pb-field-icon-wrap .pb-brand-more {
+  display: inline-block;
+  margin-left: 2px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: #eef0f3;
+  color: #5b616b;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Default strip: Visa / MC / Amex / Elo + “+3” (Hipercard, Diners, JCB) */
+.pb-field-icon-wrap[data-pb-brand=""] .pb-brand-hipercard,
+.pb-field-icon-wrap[data-pb-brand=""] .pb-brand-diners,
+.pb-field-icon-wrap[data-pb-brand=""] .pb-brand-jcb {
+  display: none;
+}
+
+/* Detected brand: hide strip / +3, keep only the matching logo.
+   Show rules must match or beat the hide selector specificity. */
+.pb-field-icon-wrap[data-pb-brand]:not([data-pb-brand=""]) .pb-card-brands img,
+.pb-field-icon-wrap[data-pb-brand]:not([data-pb-brand=""]) .pb-brand-more {
+  display: none;
+}
+
+.pb-field-icon-wrap[data-pb-brand="visa"] .pb-card-brands img.pb-brand-visa,
+.pb-field-icon-wrap[data-pb-brand="mastercard"] .pb-card-brands img.pb-brand-mastercard,
+.pb-field-icon-wrap[data-pb-brand="american_express"] .pb-card-brands img.pb-brand-amex,
+.pb-field-icon-wrap[data-pb-brand="elo"] .pb-card-brands img.pb-brand-elo,
+.pb-field-icon-wrap[data-pb-brand="hipercard"] .pb-card-brands img.pb-brand-hipercard,
+.pb-field-icon-wrap[data-pb-brand="diners_club"] .pb-card-brands img.pb-brand-diners,
+.pb-field-icon-wrap[data-pb-brand="jcb"] .pb-card-brands img.pb-brand-jcb {
+  display: block;
+}
+
+#pb-card-number {
+  padding-right: 7rem;
+  background-image: none;
+}
+
+.pb-field-icon-wrap[data-pb-brand]:not([data-pb-brand=""]) #pb-card-number {
+  padding-right: 2.75rem;
+}
+
+/* CVV hint icon (card back) */
+#pb-card-cvv {
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 32px 22px;
+  background-image: url(../img/credit-cards/cvv.svg);
+  padding-right: 3rem;
+}
+
+#pb-3ds-challenge {
+  margin-top: 1rem;
+}
+
+.pb-pix-display textarea,
+.pb-payment-return textarea {
+  font-family: monospace;
+  font-size: 0.85rem;
+}

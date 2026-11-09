@@ -1,0 +1,28 @@
+{
+  "name": "pbintegracoes/pbconnect-prestashop",
+  "description": "PB Connect payment module for PrestaShop (API v1 / Vindi)",
+  "version": "5.0.0",
+  "type": "prestashop-module",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "PB Integrações",
+      "homepage": "https://pbintegracoes.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1"
+  },
+  "config": {
+    "prepend-autoloader": false
+  },
+  "autoload": {
+    "psr-4": {
+      "PbConnect\\": "src/"
+    }
+  },
+  "require-dev": {
+    "prestashop/php-dev-tools": "^5.0",
+    "friendsofphp/php-cs-fixer": "^3.95"
+  }
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="modules/pbconnect/src/Admin" source-language="en-US" target-language="pt" datatype="plaintext">
+    <body>
+      <trans-unit id="settings_saved"><source>Settings saved.</source><target>Configurações salvas.</target></trans-unit>
+      <trans-unit id="connect_key"><source>Connect Key</source><target>Connect Key</target></trans-unit>
+      <trans-unit id="connect_key_desc"><source>Paste a CONVD / CONVDSANDBOX key from PB Integrações.</source><target>Cole uma chave CONVD / CONVDSANDBOX da PB Integrações.</target></trans-unit>
+      <trans-unit id="connect_key_invalid_save"><source>Connect Key was not saved because validation failed: </source><target>A Connect Key não foi salva porque a validação falhou: </target></trans-unit>
+      <trans-unit id="connect_key_valid"><source>Connect Key is valid.</source><target>Connect Key válida.</target></trans-unit>
+      <trans-unit id="connect_key_validation_failed"><source>Connect Key validation failed: </source><target>Falha na validação da Connect Key: </target></trans-unit>
+      <trans-unit id="stored_key_invalid"><source>The stored Connect Key is invalid. Paste a new key from PB Integrações and click Save.</source><target>A Connect Key armazenada é inválida. Cole uma nova chave da PB Integrações e clique em Salvar.</target></trans-unit>
+      <trans-unit id="validate_key"><source>Validate key</source><target>Validar chave</target></trans-unit>
+      <trans-unit id="generate_prod"><source>Generate production key</source><target>Gerar chave de produção</target></trans-unit>
+      <trans-unit id="generate_sand"><source>Generate sandbox key</source><target>Gerar chave sandbox</target></trans-unit>
+      <trans-unit id="general"><source>General settings</source><target>Configurações gerais</target></trans-unit>
+      <trans-unit id="debug"><source>Debug logs</source><target>Logs de debug</target></trans-unit>
+      <trans-unit id="short_urls"><source>Prefer short notification URLs</source><target>Preferir URLs curtas de notificação</target></trans-unit>
+      <trans-unit id="os_waiting"><source>Order state — awaiting payment</source><target>Status do pedido — aguardando pagamento</target></trans-unit>
+      <trans-unit id="os_paid"><source>Order state — paid</source><target>Status do pedido — pago</target></trans-unit>
+      <trans-unit id="os_error"><source>Order state — payment error</source><target>Status do pedido — erro no pagamento</target></trans-unit>
+      <trans-unit id="credit_card"><source>Credit card</source><target>Cartão de crédito</target></trans-unit>
+      <trans-unit id="cc_enabled"><source>Credit card enabled</source><target>Cartão de crédito ativado</target></trans-unit>
+      <trans-unit id="cc_title"><source>Credit card title</source><target>Título do cartão de crédito</target></trans-unit>
+      <trans-unit id="installments_enabled"><source>Installments enabled</source><target>Parcelamento ativado</target></trans-unit>
+      <trans-unit id="installment_options"><source>Installment options</source><target>Opções de parcelamento</target></trans-unit>
+      <trans-unit id="max_no_interest"><source>Max installments without interest</source><target>Máximo de parcelas sem juros</target></trans-unit>
+      <trans-unit id="min_installment"><source>Minimum installment amount (BRL)</source><target>Valor mínimo da parcela (R$)</target></trans-unit>
+      <trans-unit id="limit_installments"><source>Limit installments</source><target>Limite de parcelas</target></trans-unit>
+      <trans-unit id="threeds_enabled"><source>3D Secure enabled</source><target>3D Secure ativado</target></trans-unit>
+      <trans-unit id="threeds_min"><source>3DS minimum amount (cents)</source><target>Valor mínimo para 3DS (centavos)</target></trans-unit>
+      <trans-unit id="threeds_allow"><source>Allow continue without 3DS</source><target>Permitir continuar sem 3DS</target></trans-unit>
+      <trans-unit id="mode_account"><source>Use account promotions</source><target>Usar promoções da conta</target></trans-unit>
+      <trans-unit id="mode_buyer"><source>Interest paid by buyer (always)</source><target>Juros pagos pelo comprador (sempre)</target></trans-unit>
+      <trans-unit id="mode_upto_n"><source>Up to N installments without interest</source><target>Até N parcelas sem juros</target></trans-unit>
+      <trans-unit id="mode_min"><source>By minimum installment value</source><target>Pelo valor mínimo da parcela</target></trans-unit>
+      <trans-unit id="pix"><source>PIX</source><target>PIX</target></trans-unit>
+      <trans-unit id="pix_enabled"><source>PIX enabled</source><target>PIX ativado</target></trans-unit>
+      <trans-unit id="pix_title"><source>PIX title</source><target>Título do PIX</target></trans-unit>
+      <trans-unit id="pix_expiry"><source>PIX expiration (minutes)</source><target>Expiração do PIX (minutos)</target></trans-unit>
+      <trans-unit id="pix_discount"><source>PIX discount (%)</source><target>Desconto PIX (%)</target></trans-unit>
+      <trans-unit id="boleto"><source>Boleto</source><target>Boleto</target></trans-unit>
+      <trans-unit id="boleto_enabled"><source>Boleto enabled</source><target>Boleto ativado</target></trans-unit>
+      <trans-unit id="boleto_title"><source>Boleto title</source><target>Título do boleto</target></trans-unit>
+      <trans-unit id="boleto_days"><source>Boleto due days</source><target>Dias para vencimento do boleto</target></trans-unit>
+      <trans-unit id="checkout_pb"><source>Checkout PB</source><target>Checkout PB</target></trans-unit>
+      <trans-unit id="checkout_pb_enabled"><source>Checkout PB enabled</source><target>Checkout PB ativado</target></trans-unit>
+      <trans-unit id="checkout_pb_title"><source>Checkout PB title</source><target>Título do Checkout PB</target></trans-unit>
+      <trans-unit id="checkout_methods"><source>Payment methods (comma-separated)</source><target>Métodos de pagamento (separados por vírgula)</target></trans-unit>
+      <trans-unit id="save"><source>Save</source><target>Salvar</target></trans-unit>
+      <trans-unit id="yes"><source>Yes</source><target>Sim</target></trans-unit>
+      <trans-unit id="no"><source>No</source><target>Não</target></trans-unit>
+      <trans-unit id="pb_payments"><source>PB Connect payments</source><target>Pagamentos PB Connect</target></trans-unit>
+      <trans-unit id="method"><source>Method</source><target>Método</target></trans-unit>
+      <trans-unit id="status"><source>Status</source><target>Status</target></trans-unit>
+      <trans-unit id="order_id"><source>Order ID</source><target>ID do pedido</target></trans-unit>
+      <trans-unit id="charge_id"><source>Charge ID</source><target>ID da cobrança</target></trans-unit>
+      <trans-unit id="amount_cents"><source>Amount (cents)</source><target>Valor (centavos)</target></trans-unit>
+      <trans-unit id="date"><source>Date</source><target>Data</target></trans-unit>
+      <trans-unit id="force_update"><source>Forçar atualização</source><target>Forçar atualização</target></trans-unit>
+      <trans-unit id="force_update_title"><source>Fetches the order from the API and applies changes if any. Use when webhooks are blocked or unavailable.</source><target>Busca o pedido na API e aplica mudanças se houver. Use se os webhooks estiverem bloqueados ou indisponíveis.</target></trans-unit>
+      <trans-unit id="ver_vindi"><source>Ver na Vindi</source><target>Ver na Vindi</target></trans-unit>
+      <trans-unit id="ver_yapay"><source>Ver na Yapay</source><target>Ver na Yapay</target></trans-unit>
+    </body>
+  </file>
+</xliff>

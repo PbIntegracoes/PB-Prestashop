@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="modules/pbconnect" source-language="en-US" target-language="pt" datatype="plaintext">
+    <body>
+      <trans-unit id="display_name"><source>PB Connect</source><target>PB Connect</target></trans-unit>
+      <trans-unit id="description"><source>Accept PIX, credit card, boleto and Checkout PB with the best providers.</source><target>Aceite PIX, cartão de crédito, boleto e Checkout PB com os melhores provedores.</target></trans-unit>
+      <trans-unit id="confirm_uninstall"><source>Are you sure you want to uninstall PB Connect?</source><target>Tem certeza de que deseja desinstalar o PB Connect?</target></trans-unit>
+    </body>
+  </file>
+</xliff>

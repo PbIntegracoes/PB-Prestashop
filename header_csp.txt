@@ -1,0 +1,1 @@
+api.pbintegracoes.com;checkout.pbintegracoes.com;*.vindi.com.br;sandbox-app.vindi.com.br;app.vindi.com.br;sandbox-mpi.vindi.com.br;mpi.vindi.com.br;*.cardinalcommerce.com;centinelapistag.cardinalcommerce.com;centinelapi.cardinalcommerce.com;geostag.cardinalcommerce.com;geo.cardinalcommerce.com;*.cloudfront.net;*.yapay.com.br

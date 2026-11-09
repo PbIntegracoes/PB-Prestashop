@@ -1,0 +1,13 @@
+.pbconnect-key-actions {
+  margin: 0.5rem 0 1rem;
+}
+
+.pbconnect-key-actions .btn {
+  margin-right: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.pb-field-merchant-upto-n,
+.pb-field-min-installment {
+  /* toggled by admin-config.js */
+}

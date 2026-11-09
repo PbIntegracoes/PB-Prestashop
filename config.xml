@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>pbconnect</name>
+    <displayName><![CDATA[PB Connect]]></displayName>
+    <version><![CDATA[5.0.0]]></version>
+    <description><![CDATA[Accept PIX, credit card, boleto and Checkout PB with the best providers.]]></description>
+    <author><![CDATA[PB Integrações]]></author>
+    <tab><![CDATA[payments_gateways]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+    <limited_countries></limited_countries>
+</module>
